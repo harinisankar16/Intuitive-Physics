@@ -1,3 +1,7 @@
+# code creates basic towers using the cube entity and you can stack as many cubes as specified by num_blocks
+# each cube's x and z positions are jittered randomly 
+
+
 from ursina import *
 import random
 
@@ -10,12 +14,12 @@ EditorCamera()
 ground = Entity(model="cube", color=color.gray, scale=(6, 0.1, 6), position=(0, 0, 0))
 
 # Define block dimensions
-block_width = 1
-block_height = 0.5
-block_depth = 1
+block_width = 2
+block_height = 1
+block_depth = 3
 
 # Number of blocks in the tower
-num_blocks = 10
+num_blocks = 3
 
 blocks = []
 

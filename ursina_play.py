@@ -15,3 +15,15 @@
 # firstFloor =  Entity(model=Plane(subdivisions=(3,6)), color = color.rgb(0,0,0), texture='brick', position = (0,0,0))
 
 # app.run()
+
+# urisna coordinate system 
+# https://www.ursinaengine.org/coordinate_system.html
+
+#             y (up)
+#             |
+#             |
+# (forward) z |
+#           \ |
+#            \|
+#             *---------- x (right)
+
