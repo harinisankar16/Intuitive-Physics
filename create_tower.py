@@ -5,6 +5,20 @@
 from ursina import *
 import random
 
+def check_cog(entity_b, entity_t):
+    top_cog = entity_t.world_position
+
+    bottom_cog = entity_b.world_position
+    bottom_dim = entity_b.scale
+
+    x_min = bottom_cog.x - bottom_dim.x / 2
+    x_max = bottom_cog.x + bottom_dim.x / 2
+    z_min = bottom_cog.z - bottom_dim.z / 2
+    z_max = bottom_cog.z + bottom_dim.z / 2
+
+    return (top_cog >= x_min and top_cog <= x_max) and (top_cog>=z_min and top_cog <=z_max)
+      
+
 app = Ursina()
 
 EditorCamera()
@@ -26,12 +40,8 @@ blocks = []
 # Build the tower
 for i in range(num_blocks):
 
-    x_jitter = random.uniform(
-        -block_width / 2, block_width / 2
-    )  # randomly jitter the x position for each cube
-    z_jitter = random.uniform(
-        -block_depth / 2, block_depth / 2
-    )  # randomly jitter the z position for each cube
+    x_jitter = random.uniform(-block_width / 2, block_width / 2)  # randomly jitter the x position for each cube
+    z_jitter = random.uniform(-block_depth / 2, block_depth / 2)  # randomly jitter the z position for each cube
 
     block = Entity(
         model="cube",
@@ -47,10 +57,16 @@ for i in range(num_blocks):
 
     blocks.append(block)
 
-#have it rotate
-def update():
-    for block in blocks:
-        block.rotation_y += 20 * time.dt
+    print(f"cog of block{i} is within cog of block{i-1}: {check_cog(blocks[i-1],blocks[i])}")
+    
+        # x_jitter = random.uniform(-block_width / 2, block_width / 2)  # randomly jitter the x position for each cube
+        # z_jitter = random.uniform(-block_depth / 2, block_depth / 2)  # randomly jitter the z position for each cube
+
+print(blocks)
+# #have it rotate
+# def update():
+#     for block in blocks:
+#         block.rotation_y += 20 * time.dt
 
 
 app.run()
