@@ -19,7 +19,7 @@ def check_cog(entity_b, entity_t):
     z_min = bottom_cog.z - bottom_dim.z / 2
     z_max = bottom_cog.z + bottom_dim.z / 2
 
-    return (top_cog >= x_min and top_cog <= x_max) and (top_cog>=z_min and top_cog <=z_max)
+    return (top_cog.x >= x_min and top_cog.x <= x_max) and (top_cog.z >=z_min and top_cog.z <=z_max)
       
 
 
