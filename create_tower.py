@@ -15,10 +15,10 @@ def check_cog(entity_b, entity_t): #b = bottom, t = top
 
     x_min = bottom_cog.x - bottom_dim.x / 2
     x_max = bottom_cog.x + bottom_dim.x / 2
-    z_min = bottom_cog.z - bottom_dim.z / 2
-    z_max = bottom_cog.z + bottom_dim.z / 2
+    # z_min = bottom_cog.z - bottom_dim.z / 2
+    # z_max = bottom_cog.z + bottom_dim.z / 2
 
-    return (top_cog.x >= x_min and top_cog.x <= x_max) and (top_cog.z >= z_min and top_cog.z <=z_max)
+    return top_cog.x >= x_min and top_cog.x <= x_max 
       
 app = Ursina()
 
@@ -59,7 +59,6 @@ for i in range(num_blocks):
             model="cube",
             color=color.rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)),
             scale=curr_scale,
-            texture="brick",
             position=(0, ground.position.y + curr_scale.y / 2, 0),
             rotation= rotation,
             collider="box",
@@ -68,10 +67,10 @@ for i in range(num_blocks):
     else:
         while True:
             x_jitter = random.uniform(-curr_scale.x / 2, curr_scale.x / 2)  # randomly jitter the x position for each cube
-            z_jitter = random.uniform(-curr_scale.z / 2, curr_scale.z / 2)  # randomly jitter the z position for each cube
+            # z_jitter = random.uniform(-curr_scale.z / 2, curr_scale.z / 2)  # randomly jitter the z position for each cube
 
             new_x = tower[-1].position.x + x_jitter
-            new_z = tower[-1].position.z + z_jitter
+            new_z = tower[-1].position.z 
             new_y = tower[-1].position.y + (tower[-1].scale.y / 2) + (curr_scale.y / 2)
 
             block = Entity(
@@ -80,7 +79,6 @@ for i in range(num_blocks):
                     random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
                 ),
                 scale=curr_scale,
-                texture="brick",
                 position=(new_x, new_y, new_z),
                 rotation= rotation,
                 collider="box",
