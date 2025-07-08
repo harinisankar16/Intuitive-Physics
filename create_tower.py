@@ -5,6 +5,7 @@
 from ursina import *
 import random
 
+
 # TODO: need to make sure check_cog works for rotated blocks 
 
 def check_cog(entity_b, entity_t): #b = bottom, t = top
@@ -38,7 +39,6 @@ block_depth = 1
 num_blocks = 6
 
 tower = []
-
 
 
 # Build the tower
@@ -90,15 +90,12 @@ for i in range(num_blocks):
             else: 
                 destroy(block)
 
+        block.gravity = 1
+        
+
 
     print(f"cog of block{i} is within cog of block{i-1}: {check_cog(tower[-1],tower[i])}")
     
-        
-# print(blocks)
-# #have it rotate
-# def update():
-#     for block in blocks:
-#         block.rotation_y += 20 * time.dt
 
 
 app.run()
